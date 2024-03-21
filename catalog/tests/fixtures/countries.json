@@ -1,0 +1,9 @@
+[
+  {
+    "model": "catalog.country",
+    "pk": 1,
+    "fields": {
+      "name": "USA"
+    }
+  }
+]
