@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Profile</h1>
+  <h2>Books borrowed:</h2>
+<ul>
+  {% for book in book_copy %}
+  <li>{{ book.book.title }} by {{ book.book.author }} : {{ book.due_back }}</li>
+  {% endfor %}
+</ul>
+{% endblock %}
