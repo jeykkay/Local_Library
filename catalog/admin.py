@@ -29,7 +29,7 @@ class BookCopyAdmin(admin.ModelAdmin):
             'fields': ('book', 'isbn', 'languages')
         }),
         ('Group 2', {
-            'fields': ('borrower', 'due_back', 'status')
+            'fields': ('borrower', 'start_date', 'due_back', 'status')
         })
     )
 

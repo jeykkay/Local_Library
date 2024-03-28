@@ -5,7 +5,7 @@
   <h2>Books borrowed:</h2>
 <ul>
   {% for book in book_copy %}
-  <li>{{ book.book.title }} by {{ book.book.author }} : {{ book.due_back }}</li>
+  <li>{{ book.book.title }} by {{ book.book.author }} : {{ book.start_date }} - {{ book.due_back }}</li>
   {% endfor %}
 </ul>
 {% endblock %}

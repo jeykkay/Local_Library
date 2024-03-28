@@ -73,6 +73,7 @@ class BookCopy(models.Model):
     borrower = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     languages = models.ForeignKey(Language, on_delete=models.CASCADE)
     status = models.CharField(choices=STATUSES, max_length=50, default='Available')
+    start_date = models.DateField(null=True, blank=True)
     due_back = models.DateField(null=True, blank=True)
     isbn = models.CharField(max_length=13)
 
@@ -81,4 +82,7 @@ class BookCopy(models.Model):
         verbose_name_plural = 'Book Copies'
 
     def __str__(self):
-        return f'{self.book}-{self.isbn}'
+        return f'{self.borrower} {self.book} {self.status}'
+
+    def get_absolute_url(self):
+        return reverse('book-copy', kwargs={'pk': self.pk})
