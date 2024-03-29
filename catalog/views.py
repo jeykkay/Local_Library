@@ -73,7 +73,7 @@ class ReservationView(LoginRequiredMixin, View):
             book_instance.borrower = borrower
             book_instance.status = 'On loan'
             book_instance.reservation_start_date = timezone.now()
-            book_instance.due_back = timezone.now() + datetime.timedelta(days=14)
+            book_instance.due_back = timezone.now() + datetime.timedelta(weeks=2)
             book_instance.save()
         return redirect(book_instance.get_absolute_url())
 
