@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from django.contrib.auth.forms import UserCreationForm
 from django.views import View
-from catalog.models import BookCopy
+from catalog.models import BookInstance
 
 
 class SignUpView(CreateView):
@@ -14,5 +14,5 @@ class SignUpView(CreateView):
 
 class ProfileView(View):
     def get(self, request):
-        book_copy = BookCopy.objects.filter(borrower=self.request.user)
+        book_copy = BookInstance.objects.filter(borrower=self.request.user)
         return render(request, 'profile.html', {'book_copy': book_copy})

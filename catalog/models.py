@@ -61,7 +61,7 @@ class Book(models.Model):
         return reverse('book-detail', kwargs={'pk': self.pk})
 
 
-class BookCopy(models.Model):
+class BookInstance(models.Model):
     STATUSES = (
         ('Available', 'Available'),
         ('On Loan', 'On Loan'),
@@ -85,4 +85,4 @@ class BookCopy(models.Model):
         return f'{self.borrower} {self.book} {self.status}'
 
     def get_absolute_url(self):
-        return reverse('book-copy', kwargs={'pk': self.pk})
+        return reverse('book-instance', kwargs={'pk': self.pk})

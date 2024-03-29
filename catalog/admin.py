@@ -1,13 +1,13 @@
 from django.contrib import admin
-from catalog.models import Author, Book, BookCopy, Genre, Language, Country
+from catalog.models import Author, Book, BookInstance, Genre, Language, Country
 
 
 class BookInline(admin.TabularInline):
     model = Book
 
 
-class BookCopyInline(admin.StackedInline):
-    model = BookCopy
+class BookInstanceInline(admin.StackedInline):
+    model = BookInstance
 
 
 class AuthorAdmin(admin.ModelAdmin):
@@ -19,10 +19,10 @@ class AuthorAdmin(admin.ModelAdmin):
 class BookAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'display_genre')
     search_fields = ('title', 'author__pseudonym', 'author__first_name', 'genre__name')
-    inlines = [BookCopyInline]
+    inlines = [BookInstanceInline]
 
 
-class BookCopyAdmin(admin.ModelAdmin):
+class BookInstanceAdmin(admin.ModelAdmin):
     list_display = ('book', 'isbn', 'status')
     fieldsets = (
         ('Group 2', {
@@ -36,7 +36,7 @@ class BookCopyAdmin(admin.ModelAdmin):
 
 admin.site.register(Author, AuthorAdmin)
 admin.site.register(Book, BookAdmin)
-admin.site.register(BookCopy, BookCopyAdmin)
+admin.site.register(BookInstance, BookInstanceAdmin)
 
 admin.site.register(Genre)
 admin.site.register(Language)

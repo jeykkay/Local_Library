@@ -11,11 +11,11 @@
     </h2>
     <hr>
     <h4 class="card-text">Available Copies: {{ book.bookcopy_set.count }}</h4>
-    {% for book_copy in bookcopy_set.all %}
-        {% if book_copy.status == 'Available' %}
+    {% for book_instance in book.bookinstance_set.all %}
+        {% if book_instance.status == 'Available' %}
             <h4 class="card-text">
-                <a href="{{ book_copy.get_absolute_url }}">
-                    {{ book_copy.isbn }} {{ book_copy.language.name }}
+                <a href="{{ book_instance.get_absolute_url }}">
+                    {{ book_instance.isbn }} {{ book_instance.language.name }}
                 </a>
             </h4>
         {% endif %}
